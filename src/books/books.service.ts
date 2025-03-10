@@ -14,16 +14,20 @@ export class BooksService {
     private booksRepository: Repository<Book>,
   ) {}
 
-  create(createBookInput: CreateBookInput) {
-    return this.booksRepository.create(createBookInput);
+  async create(createBookInput: CreateBookInput): Promise<Book> {
+    const book = this.booksRepository.create(createBookInput);
+    return this.booksRepository.save(book);
   }
 
-  findAll(): Promise<Book[]> {
-    return this.booksRepository.find();
+  // TO-DO FIX
+  async findAll(): Promise<Book[]> {
+    const books = await this.booksRepository.find();
+    return books
   }
-
-  findOne(id: number): Promise<Book | null> {
-    return this.booksRepository.findOneBy({ id });
+  // TO-DO FIX
+  async findOne(id: number): Promise<Book> {
+    const book = await this.booksRepository.findOneByOrFail({ id });
+    return book;
   }
 
   async update(id: number, updateBookInput: UpdateBookInput): Promise<Book | null> {
@@ -32,6 +36,7 @@ export class BooksService {
   }
 
   async remove(id: number): Promise<void> {
-    await this.booksRepository.delete(id);
+    const book = await this.booksRepository.findOneByOrFail({id});
+    await this.booksRepository.delete(book);
   }
 }
