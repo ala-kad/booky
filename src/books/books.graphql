@@ -1,3 +1,14 @@
+type Query {
+  books: [Book]!
+  book(id: Int!): Book
+}
+
+type Mutation {
+  createBook(createBookInput: CreateBookInput!): Book!
+  updateBook(updateBookInput: UpdateBookInput!): Book!
+  removeBook(id: Int!): Book
+}
+
 type Book {
   id: Int!
   name: String!
@@ -15,13 +26,4 @@ input UpdateBookInput {
   description: String
 }
 
-type Query {
-  books: [Book]!
-  book(id: Int!): Book
-}
 
-type Mutation {
-  createBook(createBookInput: CreateBookInput!): Book!
-  updateBook(updateBookInput: UpdateBookInput!): Book!
-  removeBook(id: Int!): Book
-}
