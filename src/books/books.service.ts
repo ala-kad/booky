@@ -19,12 +19,11 @@ export class BooksService {
     return this.booksRepository.save(book);
   }
 
-  // TO-DO FIX
   async findAll(): Promise<Book[]> {
     const books = await this.booksRepository.find();
     return books
   }
-  // TO-DO FIX
+  
   async findOne(id: number): Promise<Book> {
     const book = await this.booksRepository.findOneByOrFail({ id });
     return book;
@@ -35,8 +34,9 @@ export class BooksService {
     return this.booksRepository.findOneBy({ id });
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<Book> {
     const book = await this.booksRepository.findOneByOrFail({id});
-    await this.booksRepository.delete(book);
+    await this.booksRepository.remove(book);
+    return book;
   }
 }
