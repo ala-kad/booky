@@ -12,7 +12,7 @@ type Mutation {
 type Book {
   id: Int!
   name: String!
-  description: String
+  description: String!
 }
 
 input CreateBookInput {
