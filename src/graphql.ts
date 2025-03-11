@@ -19,12 +19,6 @@ export class UpdateBookInput {
     description?: Nullable<string>;
 }
 
-export class Book {
-    id: number;
-    name: string;
-    description?: Nullable<string>;
-}
-
 export abstract class IQuery {
     abstract books(): Nullable<Book>[] | Promise<Nullable<Book>[]>;
 
@@ -37,6 +31,12 @@ export abstract class IMutation {
     abstract updateBook(updateBookInput: UpdateBookInput): Book | Promise<Book>;
 
     abstract removeBook(id: number): Nullable<Book> | Promise<Nullable<Book>>;
+}
+
+export class Book {
+    id: number;
+    name: string;
+    description: string;
 }
 
 type Nullable<T> = T | null;
