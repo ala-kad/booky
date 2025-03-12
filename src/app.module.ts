@@ -16,6 +16,7 @@ import { AppController } from './app.controller';
 import { join } from 'path';
 // Entities
 import { Book } from './books/entities/book.entity';
+import { ApolloService } from './apollo/apollo.service';
 
 @Module({
   imports: [
@@ -29,9 +30,10 @@ import { Book } from './books/entities/book.entity';
       driver: ApolloDriver,
       typePaths: ['./src/**/*.graphql'],
       definitions: {
-       path: join(process.cwd(), 'src/graphql.ts'),
+       path: join(process.cwd(), 'src/schema.ts'),
         outputAs: 'class',
       },
+      sortSchema: true,
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
@@ -42,6 +44,6 @@ import { Book } from './books/entities/book.entity';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ApolloService],
 })
 export class AppModule {}

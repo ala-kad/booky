@@ -9,34 +9,34 @@
 /* eslint-disable */
 
 export class CreateBookInput {
-    name: string;
     description?: Nullable<string>;
+    name: string;
 }
 
 export class UpdateBookInput {
+    description?: Nullable<string>;
     id: number;
     name?: Nullable<string>;
-    description?: Nullable<string>;
 }
 
-export abstract class IQuery {
-    abstract books(): Nullable<Book>[] | Promise<Nullable<Book>[]>;
-
-    abstract book(id: number): Nullable<Book> | Promise<Nullable<Book>>;
+export class Book {
+    description: string;
+    id: number;
+    name: string;
 }
 
 export abstract class IMutation {
     abstract createBook(createBookInput: CreateBookInput): Book | Promise<Book>;
 
-    abstract updateBook(updateBookInput: UpdateBookInput): Book | Promise<Book>;
-
     abstract removeBook(id: number): Nullable<Book> | Promise<Nullable<Book>>;
+
+    abstract updateBook(updateBookInput: UpdateBookInput): Book | Promise<Book>;
 }
 
-export class Book {
-    id: number;
-    name: string;
-    description: string;
+export abstract class IQuery {
+    abstract book(id: number): Nullable<Book> | Promise<Nullable<Book>>;
+
+    abstract books(): Nullable<Book>[] | Promise<Nullable<Book>[]>;
 }
 
 type Nullable<T> = T | null;
