@@ -9,7 +9,7 @@
 /* eslint-disable */
 
 export class CreateBookInput {
-    description?: Nullable<string>;
+    description: string;
     name: string;
 }
 
@@ -26,7 +26,7 @@ export class Book {
 }
 
 export abstract class IMutation {
-    abstract createBook(createBookInput: CreateBookInput): Book | Promise<Book>;
+    abstract createBook(createBookInput?: Nullable<CreateBookInput>): Book | Promise<Book>;
 
     abstract removeBook(id: number): Nullable<Book> | Promise<Nullable<Book>>;
 
