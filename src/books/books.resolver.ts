@@ -3,12 +3,14 @@ import { BooksService } from './books.service';
 import { CreateBookInput } from './dto/create-book.input';
 import { UpdateBookInput } from './dto/update-book.input';
 
-@Resolver('Book')
+import { Book } from './entities/book.entity';
+
+@Resolver(() => Book)
 export class BooksResolver {
   constructor(private readonly booksService: BooksService) {}
 
-  @Mutation('createBook')
-  create(@Args('createBookInput') createBookInput: CreateBookInput) {
+  @Mutation(() => Book) 
+  createBook(@Args('createBookInput') createBookInput: CreateBookInput): Promise<Book>{
     return this.booksService.create(createBookInput);
   }
 
