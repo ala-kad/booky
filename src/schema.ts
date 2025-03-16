@@ -28,7 +28,7 @@ export class Book {
 export abstract class IMutation {
     abstract createBook(createBookInput?: Nullable<CreateBookInput>): Book | Promise<Book>;
 
-    abstract removeBook(id: number): Nullable<Book> | Promise<Nullable<Book>>;
+    abstract removeBook(id: number): Book | Promise<Book>;
 
     abstract updateBook(updateBookInput: UpdateBookInput): Book | Promise<Book>;
 }
