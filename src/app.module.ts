@@ -8,7 +8,7 @@ import { UsrModule } from './usr/usr.module';
 import { BooksModule } from './books/books.module';
 // Services
 import { AppService } from './app.service';
-// Drivers
+import { ApolloService } from './apollo/apollo.service';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 // Controllers
 import { AppController } from './app.controller';
@@ -16,7 +16,6 @@ import { AppController } from './app.controller';
 import { join } from 'path';
 // Entities
 import { Book } from './books/entities/book.entity';
-import { ApolloService } from './apollo/apollo.service';
 
 @Module({
   imports: [
