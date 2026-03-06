@@ -23,7 +23,10 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+ Library Management System Application.
+
+## Tech Stack
+[Nest](https://github.com/nestjs/nest)
 
 ## Project setup
 
